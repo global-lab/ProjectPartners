@@ -21,8 +21,7 @@ const IQPTable =  ({ tabledata }) => {
                                data={tabledata}
                                options={{
                                    search: true,
-                                   exportButton: true,
-                                   pageSize:5,
+                                   pageSize:200,
                                    pageSizeOptions: [10]
                                }}/>
             </div>

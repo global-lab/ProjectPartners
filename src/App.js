@@ -12,6 +12,7 @@ import Grid from "@material-ui/core/Grid";
 import TextField from '@material-ui/core/TextField';
 import './App.css';
 import { Button } from "@material-ui/core";
+import { ExportToCsv } from 'export-to-csv';
 import Box from "@material-ui/core/Box";
 
 
@@ -52,6 +53,21 @@ function FindingProjectCenters() {
 FindingProjectCenters();
 
 
+const options = {
+  fieldSeparator: ',',
+  quoteStrings: '"',
+  decimalSeparator: '.',
+  showLabels: true,
+  showTitle: true,
+  title: 'Climate Change',
+  useTextFile: false,
+  useBom: true,
+  useKeysAsHeaders: true,
+  // headers: ['Column 1', 'Column 2', etc...] <-- Won't work with useKeysAsHeaders present!
+};
+
+const csvExporter = new ExportToCsv(options);
+
 
 export default class App extends Component {
   constructor(props) {
@@ -80,7 +96,13 @@ export default class App extends Component {
   handleButtonClick = () => (e) => {
     selectedCountry = "home";
     earliestDate = '1997-12-01';
+    earliestDate1 = earliestDate.replace('-', '');
+    earliestDate2 = earliestDate1.replace('-', '');
+    earliestDateNum = parseInt(earliestDate2);
     latestDate = '2020-09-28';
+    latestDate1 = latestDate.replace('-', '');
+    latestDate2 = latestDate1.replace('-', '');
+    latestDateNum = parseInt(latestDate2);
     CenterInfo = [];
     projectCenters.forEach(function (key) {
       TableData.forEach(function (Center) {
@@ -109,7 +131,8 @@ export default class App extends Component {
   }
 
   filterfunction = () => {
-    console.log(selectedCountry);
+    console.log(earliestDate);
+    console.log(earliestDateNum);
     CenterInfo = [];
     if (selectedCountry === 'home'){
           CenterInfoClone.forEach(function (Center) {
@@ -133,6 +156,11 @@ export default class App extends Component {
     });
     this.onOpen("settings");
   }
+
+  handleCSVClick = () => (e) => {
+    csvExporter.generateCsv(CenterInfo);
+  }
+
 
   render () {
     return (
@@ -181,6 +209,28 @@ export default class App extends Component {
                 </Grid>
               </Grid>
               </div>
+              <Box mt={2} />
+              <Grid container spacing={3}>
+                <Grid item xs={6}>
+                  <Button style={{
+                    backgroundColor: "#0074d9",
+                  }}
+                          onClick={this.handleButtonClick()}
+                          variant="contained" color="primary">
+                    Clear
+                  </Button>
+                </Grid>
+                <Grid item xs={6}>
+                  <Button style={{
+                    backgroundColor: "#0074d9",
+                  }}
+                          onClick={this.handleCSVClick()}
+                          variant="contained" color="primary">
+                    Dowload .CSV based on your filters
+                  </Button>
+                </Grid>
+              </Grid>
+              <Box mt={2} />
               <IQPTable tabledata={CenterInfo}/>
               <Box mt={2} />
               <Button style={{
