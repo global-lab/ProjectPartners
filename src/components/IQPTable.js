@@ -1,11 +1,13 @@
 import React, {Component} from "react";
 import TableData from "./IQPTableData";
+import './Styles.css';
 import MaterialTable from "material-table";
 import Box from "@material-ui/core/Box";
 
 const colnames = [
     {
-        title: 'Sponsor', field: 'Sponsor'
+        title: 'Sponsor', field: 'Sponsor',
+        render: rowData => <a href={rowData.FullTextUrl} target="_blank">{rowData.Sponsor}</a>,
     },
     {
         title: 'Location', field: 'Location'
