@@ -14,6 +14,8 @@ import './App.css';
 import { Button } from "@material-ui/core";
 import { ExportToCsv } from 'export-to-csv';
 import Box from "@material-ui/core/Box";
+import text from './imgs/text.png';
+import WPI from './imgs/WPI_Inst.png';
 
 
 delete L.Icon.Default.prototype._getIconUrl;
@@ -165,6 +167,12 @@ export default class App extends Component {
   render () {
     return (
         <div>
+          <div className="Header">
+            <img src={text} alt="WIN"/>
+          </div>
+          <div className="WinLogo">
+            <img src={WPI} alt="WPI"/>
+          </div>
           <Sidebar
               id="sidebar"
               position="right"

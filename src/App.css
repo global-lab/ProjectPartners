@@ -24,6 +24,14 @@
   color: white;
 }
 
+.Header{
+  position: absolute;
+  margin-top: 5px;
+  margin-left: 100px;
+  z-index: 4000;
+}
+
+
 .App-link {
   color: #61dafb;
 }
@@ -35,4 +43,12 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.WinLogo {
+  height: 162px;
+  width: 306px;
+  margin-top: 79vh;
+  position: absolute;
+  z-index: 4000;
 }
