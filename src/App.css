@@ -46,9 +46,7 @@
 }
 
 .WinLogo {
-  height: 162px;
-  width: 306px;
-  margin-top: 79vh;
+  margin-top: 84vh;
   position: absolute;
   z-index: 4000;
 }
