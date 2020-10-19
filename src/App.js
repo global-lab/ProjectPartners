@@ -84,10 +84,19 @@ export default class App extends Component {
     this.setState({collapsed: true});
   }
   onOpen(id) {
-    this.setState({
-      collapsed: false,
-      selected: id,
-    })
+    if (id === "Externallink") {
+      this.setState({
+        collapsed: true,
+        selected: id,
+      })
+      window.open('https://global-lab.github.io/ProjectPartners/', '_blank')
+    }
+    else {
+      this.setState({
+        collapsed: false,
+        selected: id,
+      })
+    }
   }
 
   handleClick = (country) => (e) => {
@@ -249,6 +258,7 @@ export default class App extends Component {
                 Clear
               </Button>
             </Tab>
+            <Tab id="Externallink" icon={<FaExternalLinkAlt/>} />
           </Sidebar>
           <Map style={{ height: "100vh", width: "100%" }} className="mapStyle" center={[0, 0]} zoom={3}>
             <TileLayer
