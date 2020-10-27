@@ -50,3 +50,17 @@
   position: absolute;
   z-index: 1999;
 }
+
+.WPILogo {
+  margin-top: 84vh;
+  position: absolute;
+  z-index: 1999;
+  display: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .Header { display: none}
+  .WinLogo { display: none }
+  .WPILogo { display: block}
+}
+

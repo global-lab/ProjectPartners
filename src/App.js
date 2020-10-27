@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Map, Marker, TileLayer, Popup} from "react-leaflet";
 import 'leaflet/dist/leaflet.css'
 import { Sidebar, Tab } from 'react-leaflet-sidetabs'
-import { FaMapMarkedAlt } from "react-icons/fa";
+import { FaMapMarkedAlt, FaExternalLinkAlt } from "react-icons/fa"
 import { FiHome, FiChevronRight, FiSearch, FiSettings } from "react-icons/fi";
 import L from 'leaflet';
 import IQPTable from "./components/IQPTable";
@@ -16,6 +16,7 @@ import { ExportToCsv } from 'export-to-csv';
 import Box from "@material-ui/core/Box";
 import text from './imgs/text.png';
 import WPI from './imgs/WPI_Inst.png';
+import WPISmall from './imgs/WPI_Small.png';
 
 
 delete L.Icon.Default.prototype._getIconUrl;
@@ -181,6 +182,9 @@ export default class App extends Component {
           </div>
           <div className="WinLogo">
             <img src={WPI} alt="WPI"/>
+          </div>
+          <div className="WPILogo">
+            <img src={WPISmall} alt="WPI"/>
           </div>
           <Sidebar
               id="sidebar"
